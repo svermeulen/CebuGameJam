@@ -25,7 +25,7 @@ public class PlayerPlatformerController : PhysicsObject
             {
                 target = this.transform,
                 weight = 1.0f,
-                radius = 0.0f,
+                radius = 1.0f,
             });
 
         GameRegistry.Instance.TargetGroup.m_Targets = targets.ToArray();

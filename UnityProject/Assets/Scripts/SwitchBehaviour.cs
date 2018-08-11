@@ -26,7 +26,7 @@ public class SwitchBehaviour : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (_isOnSwitch && Input.GetKeyDown(KeyCode.F))
         {
             FlipSwitch();
         }

@@ -150,7 +150,7 @@ namespace Reuniter
             DestroyImmediate(searchLineBackgroundTex);
         }
 
-        [MenuItem("Tools/ReUniter/Go To Asset #%o")]
+        [MenuItem("Tools/ReUniter/Go To Asset")]
         [SuppressMessage("ReSharper", "UnusedMember.Local")]
         static void GoToAsset()
         {

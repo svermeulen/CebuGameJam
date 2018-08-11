@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ExitBehaviour : MonoBehaviour
 {
@@ -29,27 +30,12 @@ public class ExitBehaviour : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && GameRegistry.Instance.AllCages.IsEmpty())
         {
-            ExitPlayers();
-            CheckForLevelEnd();
-        }
-    }
-
-    void CheckForLevelEnd()
-    {
-        if (GameRegistry.Instance.AllCages.IsEmpty()
-            && GameRegistry.Instance.AllPlayers.IsEmpty())
-        {
-            Application.LoadLevel(Application.loadedLevel + 1);
-        }
-    }
-
-    void ExitPlayers()
-    {
-        foreach (var player in _players)
-        {
-            player.Exit();
+            foreach (var player in _players.ToList())
+            {
+                player.Exit();
+            }
         }
     }
 }

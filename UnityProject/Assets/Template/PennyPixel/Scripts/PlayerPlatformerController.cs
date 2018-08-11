@@ -39,19 +39,24 @@ public class PlayerPlatformerController : PhysicsObject
         }
     }
 
-    public void OnDestroy()
-    {
-        GameRegistry.Instance.RemovePlayer(this);
-    }
-
     public void Die()
     {
+        Destroy();
+
+        GameController.Instance.OnPlayerDied(this);
+    }
+
+    void Destroy()
+    {
+        GameRegistry.Instance.RemovePlayer(this);
         GameObject.Destroy(this.gameObject);
     }
 
     public void Exit()
     {
-        GameObject.Destroy(this.gameObject);
+        Destroy();
+
+        GameController.Instance.OnPlayerExited(this);
     }
 
     protected override void ComputeVelocity()

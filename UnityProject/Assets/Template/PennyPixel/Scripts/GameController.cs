@@ -2,10 +2,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
 {
+    public float KillzoneBuffer = 1.0f;
     public AudioSource WalkNoise;
+
+    GameObject _ground;
+    float _killLine;
 
     public static GameController Instance
     {
@@ -15,6 +20,16 @@ public class GameController : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+
+        _ground = GameObject.Find("Ground");
+    }
+
+    void Start()
+    {
+        var collider = _ground.GetComponent<Collider2D>();
+
+        _killLine = _ground.transform.position.y + collider.composite.bounds.min.y - KillzoneBuffer;
+        Debug.Log(string.Format("_killLine = {0}", _killLine));
     }
 
     public void OnPlayerExited(
@@ -32,6 +47,19 @@ public class GameController : MonoBehaviour
         }
 
         WalkNoise.volume = ShouldPlayFlutterNoise() ? 1 : 0;
+
+        CheckForDeaths();
+    }
+
+    void CheckForDeaths()
+    {
+        foreach (var player in GameRegistry.Instance.AllPlayers)
+        {
+            if (player.transform.position.y < _killLine)
+            {
+                player.Die();
+            }
+        }
     }
 
     bool ShouldPlayFlutterNoise()

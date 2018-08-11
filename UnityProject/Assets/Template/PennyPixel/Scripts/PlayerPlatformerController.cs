@@ -11,6 +11,7 @@ public class PlayerPlatformerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
     bool _isFrozen;
+    bool _isDead;
     Vector2 _lastMove;
 
     public static PlayerPlatformerController MainPlayer
@@ -83,18 +84,14 @@ public class PlayerPlatformerController : MonoBehaviour
             .Where(x => x.target != this.transform).ToArray();
     }
 
-    public void OnTriggerEnter2D(Collider2D theCollider)
-    {
-        if (theCollider.CompareTag("Killzone"))
-        {
-            Die();
-        }
-    }
-
     public void Die()
     {
-        GameController.Instance.OnPlayerDied(this);
-        HideAndStop();
+        if (!_isDead)
+        {
+            _isDead = true;
+            GameController.Instance.OnPlayerDied(this);
+            Invoke("HideAndStop", 0.2f);
+        }
     }
 
     void HideAndStop()
@@ -199,13 +196,14 @@ public class PlayerPlatformerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-        velocity.x = targetVelocity.x;
-
         if (_isFrozen)
         {
-            velocity = Vector2.zero;
+            rb2d.velocity = Vector2.zero;
+            return;
         }
+
+        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        velocity.x = targetVelocity.x;
 
         grounded = false;
 

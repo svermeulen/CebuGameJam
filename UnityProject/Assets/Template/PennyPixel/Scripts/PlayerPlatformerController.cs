@@ -28,7 +28,11 @@ public class PlayerPlatformerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         GameRegistry.Instance.AddPlayer(this);
+        AddToTargetGroup();
+    }
 
+    public void AddToTargetGroup()
+    {
         var targets = GameRegistry.Instance.TargetGroup.m_Targets.ToList();
 
         targets.Add(new Cinemachine.CinemachineTargetGroup.Target()
@@ -39,6 +43,12 @@ public class PlayerPlatformerController : MonoBehaviour
             });
 
         GameRegistry.Instance.TargetGroup.m_Targets = targets.ToArray();
+    }
+
+    public void RemoveFromTargetGroup()
+    {
+        GameRegistry.Instance.TargetGroup.m_Targets = GameRegistry.Instance.TargetGroup.m_Targets
+            .Where(x => x.target != this.transform).ToArray();
     }
 
     public void OnTriggerEnter2D(Collider2D theCollider)

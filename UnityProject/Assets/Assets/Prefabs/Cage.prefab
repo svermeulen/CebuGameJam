@@ -556,6 +556,7 @@ MonoBehaviour:
   PlayerPosition: {fileID: 4249541515915360}
   PlayerClonePrefab: {fileID: 1208144871472054, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
     type: 2}
+  Bars: {fileID: 1380783999209498}
 --- !u!212 &212014336060547510
 SpriteRenderer:
   m_ObjectHideFlags: 1

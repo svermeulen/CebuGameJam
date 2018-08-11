@@ -6,6 +6,7 @@ public class CageBehaviour : SwitchTriggerBase
 {
     public Transform PlayerPosition;
     public GameObject PlayerClonePrefab;
+    public GameObject Bars;
 
     PlayerPlatformerController _player;
     bool _hasOpened;
@@ -29,6 +30,7 @@ public class CageBehaviour : SwitchTriggerBase
             return;
         }
 
+        Bars.SetActive(false);
         _player.IsInCage = false;
         _player.GetComponent<SpriteRenderer>().sortingOrder = 5;
         _hasOpened = true;

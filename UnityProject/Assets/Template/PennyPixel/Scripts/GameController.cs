@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     public void OnPlayerDied(
         PlayerPlatformerController player)
     {
+        GameOverScreenController.LastLoadedLevel = Application.loadedLevel;
         SceneManager.LoadScene("GameOverScreen");
     }
 
@@ -30,7 +31,6 @@ public class GameController : MonoBehaviour
     {
         if (GameRegistry.Instance.AllPlayers.IsEmpty())
         {
-            Debug.Log("Completed Level!!");
             Application.LoadLevel(Application.loadedLevel + 1);
         }
     }

@@ -18,7 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/kaye/lvl 3.unity
     guid: 42b48b32e328ae64db3b8ddc392f9e4b
   - enabled: 1
-    path: Assets/Scenes/Steve/Steve2.unity
+    path: Assets/Scenes/Steve/Steve4.unity
+    guid: 856b698a27c3a5b4996bbf7cd71531e0
+  - enabled: 1
+    path: Assets/Scenes/Steve/Steve2 lvl 7.unity
     guid: e5aaaac46c723834b92b640f65da7bd4
   - enabled: 1
     path: Assets/Scenes/Steve/Steve3.unity

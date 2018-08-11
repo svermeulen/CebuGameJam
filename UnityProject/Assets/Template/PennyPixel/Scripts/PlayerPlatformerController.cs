@@ -90,7 +90,7 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             _isDead = true;
             GameController.Instance.OnPlayerDied(this);
-            Invoke("HideAndStop", 0.2f);
+            Invoke("HideAndStop", 0.5f);
         }
     }
 

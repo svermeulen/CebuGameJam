@@ -7,6 +7,7 @@ public class ElevatorBehaviour : SwitchTriggerBase
     public Transform DestinationPoint;
     public float MoveSpeed;
     public float Epsilong;
+    public bool IsOn;
 
     State _state;
     Rigidbody2D _rigidBody;
@@ -19,6 +20,7 @@ public class ElevatorBehaviour : SwitchTriggerBase
         _goalPosition = DestinationPoint.transform.position;
 
         _rigidBody = this.GetComponent<Rigidbody2D>();
+        _state = IsOn ? State.Idle : State.MovingToGoal;
     }
 
     public void FixedUpdate()
@@ -31,7 +33,7 @@ public class ElevatorBehaviour : SwitchTriggerBase
         {
             var goalPos = _state == State.MovingToGoal ? _goalPosition : _startPosition;
 
-            _rigidBody.velocity = (transform.position.y < goalPos.y ? Vector2.up : Vector2.down) * MoveSpeed;
+            _rigidBody.velocity = (goalPos - transform.position).normalized * MoveSpeed;
 
             if ((transform.position - goalPos).magnitude < Epsilong)
             {

@@ -23,10 +23,17 @@ public class pauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(false);
     }
+
+    public void skipLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel + 1);
+    }
+
     public void retryBtn()
     {
-        SceneManager.LoadScene(1);
+        Application.LoadLevel(Application.loadedLevel);
     }
+
     public void exitBtn()
     {
         SceneManager.LoadScene(0);

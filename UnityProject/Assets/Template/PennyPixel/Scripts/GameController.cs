@@ -3,15 +3,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public pauseMenu PauseMenu;
     public float KillzoneBuffer = 1.0f;
     public AudioSource WalkNoise;
+    public Text LevelText;
+    public GameObject GameOverPanel;
 
     GameObject _ground;
     float _killLine;
+    bool _waitingToRestart;
 
     public static GameController Instance
     {
@@ -23,6 +27,8 @@ public class GameController : MonoBehaviour
         Instance = this;
 
         _ground = GameObject.Find("Ground");
+
+        LevelText.text = string.Format("Level: {0}", Application.loadedLevelName);
     }
 
     void Start()
@@ -50,6 +56,14 @@ public class GameController : MonoBehaviour
         WalkNoise.volume = ShouldPlayFlutterNoise() ? 1 : 0;
 
         CheckForDeaths();
+
+        if (_waitingToRestart)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+        }
     }
 
     void CheckForDeaths()
@@ -76,18 +90,26 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    public void OnPlayerDied(
-        PlayerPlatformerController player)
+    public void OnPlayerDied(PlayerPlatformerController deadPlayer)
     {
         SoundManager.Instance.PlayDied();
 
-        Invoke("GoToNextLevel", 1.0f);
+        foreach (var player in GameRegistry.Instance.AllPlayers)
+        {
+            if (deadPlayer != player)
+            {
+                player.SetIsFrozen(true);
+            }
+        }
+
+        _waitingToRestart = true;
+
+        Invoke("ShowEndScreen", 0.25f);
     }
 
-    void GoToNextLevel()
+    void ShowEndScreen()
     {
-        GameOverScreenController.LastLoadedLevel = Application.loadedLevel;
-        SceneManager.LoadScene("GameOverScreen");
+        GameOverPanel.SetActive(true);
     }
 
     void CheckForLevelEnd()

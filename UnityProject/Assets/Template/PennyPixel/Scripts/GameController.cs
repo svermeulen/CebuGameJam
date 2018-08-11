@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
 {
+    public pauseMenu PauseMenu;
     public float KillzoneBuffer = 1.0f;
     public AudioSource WalkNoise;
 
@@ -43,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Mainmenu");
+            PauseMenu.pauseBtn();
         }
 
         WalkNoise.volume = ShouldPlayFlutterNoise() ? 1 : 0;

@@ -37,6 +37,11 @@ public class Mainmanager : MonoBehaviour
             var sceneName = System.IO.Path.GetFileNameWithoutExtension(
                 UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
 
+            if (sceneName == "Mainmenu" || sceneName == "WinScreen" || sceneName == "GameOverScreen")
+            {
+                continue;
+            }
+
             var button = GameObject.Instantiate(SelectLevelPrefab, SelectLevelParent).GetComponent<Button>();
 
             button.onClick.AddListener(() => SceneManager.LoadScene(sceneName));

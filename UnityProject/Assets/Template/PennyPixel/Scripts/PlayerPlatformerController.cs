@@ -8,8 +8,18 @@ public class PlayerPlatformerController : MonoBehaviour
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
+
+    public bool IsInCage
+    {
+        get; set;
+    }
+
+    public float PlatformMove
+    {
+        get; set;
+    }
 
     // Use this for initialization
     void Awake()
@@ -29,11 +39,6 @@ public class PlayerPlatformerController : MonoBehaviour
             });
 
         GameRegistry.Instance.TargetGroup.m_Targets = targets.ToArray();
-    }
-
-    public float PlatformMove
-    {
-        get; set;
     }
 
     public void OnTriggerEnter2D(Collider2D theCollider)
@@ -68,32 +73,35 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         Vector2 move = Vector2.zero;
 
-        move.x = Input.GetAxis("Horizontal");
+        if (!IsInCage)
+        {
+            move.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && grounded)
-        {
-            velocity.y = jumpTakeOffSpeed;
-        }
-        else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
+            if (Input.GetButtonDown("Jump") && grounded)
             {
-                velocity.y = velocity.y * 0.5f;
+                velocity.y = jumpTakeOffSpeed;
             }
-        }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
 
-        if (move.x > 0.01f)
-        {
-            if (spriteRenderer.flipX == true)
+            if (move.x > 0.01f)
             {
-                spriteRenderer.flipX = false;
+                if (spriteRenderer.flipX == true)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
-        }
-        else if (move.x < -0.01f)
-        {
-            if (spriteRenderer.flipX == false)
+            else if (move.x < -0.01f)
             {
-                spriteRenderer.flipX = true;
+                if (spriteRenderer.flipX == false)
+                {
+                    spriteRenderer.flipX = true;
+                }
             }
         }
 

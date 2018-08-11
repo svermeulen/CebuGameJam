@@ -13,7 +13,7 @@ public class CageBehaviour : SwitchTriggerBase
         GameRegistry.Instance.AddCage(this);
     }
 
-    public override void Trigger()
+    public override void Trigger(bool isOn)
     {
         if (_hasOpened)
         {

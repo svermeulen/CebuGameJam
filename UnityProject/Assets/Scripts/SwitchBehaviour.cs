@@ -35,7 +35,7 @@ public class SwitchBehaviour : MonoBehaviour
 
             foreach (var trigger in Triggers)
             {
-                trigger.Trigger();
+                trigger.Trigger(_isOn);
             }
         }
     }

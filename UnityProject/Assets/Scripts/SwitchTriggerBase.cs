@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SwitchTriggerBase : MonoBehaviour
 {
-    public abstract void Trigger();
+    public abstract void Trigger(bool isOn);
 }

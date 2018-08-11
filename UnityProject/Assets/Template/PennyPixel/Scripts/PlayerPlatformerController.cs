@@ -31,6 +31,11 @@ public class PlayerPlatformerController : PhysicsObject
         GameRegistry.Instance.TargetGroup.m_Targets = targets.ToArray();
     }
 
+    public float PlatformMove
+    {
+        get; set;
+    }
+
     public void OnTriggerEnter2D(Collider2D theCollider)
     {
         if (theCollider.CompareTag("Killzone"))
@@ -93,8 +98,12 @@ public class PlayerPlatformerController : PhysicsObject
         }
 
         animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("velocityX", Mathf.Abs(move.x) / maxSpeed);
+
+        move.x += PlatformMove;
 
         targetVelocity = move * maxSpeed;
+
+        PlatformMove = 0;
     }
 }

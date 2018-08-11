@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerPlatformerController : PhysicsObject
 {
@@ -17,12 +18,40 @@ public class PlayerPlatformerController : PhysicsObject
         animator = GetComponent<Animator>();
 
         GameRegistry.Instance.AddPlayer(this);
+
+        var targets = GameRegistry.Instance.TargetGroup.m_Targets.ToList();
+
+        targets.Add(new Cinemachine.CinemachineTargetGroup.Target()
+            {
+                target = this.transform,
+                weight = 1.0f,
+                radius = 0.0f,
+            });
+
+        GameRegistry.Instance.TargetGroup.m_Targets = targets.ToArray();
+    }
+
+    public void OnTriggerEnter2D(Collider2D theCollider)
+    {
+        if (theCollider.CompareTag("Killzone"))
+        {
+            Die();
+        }
+    }
+
+    public void OnDestroy()
+    {
+        GameRegistry.Instance.RemovePlayer(this);
+    }
+
+    public void Die()
+    {
+        GameObject.Destroy(this.gameObject);
     }
 
     public void Exit()
     {
         GameObject.Destroy(this.gameObject);
-        GameRegistry.Instance.RemovePlayer(this);
     }
 
     protected override void ComputeVelocity()

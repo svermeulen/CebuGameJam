@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameRegistry : MonoBehaviour
 {
+    public CinemachineTargetGroup TargetGroup;
+
     readonly List<PlayerPlatformerController> _allPlayers = new List<PlayerPlatformerController>();
     readonly List<CageBehaviour> _allCages = new List<CageBehaviour>();
 

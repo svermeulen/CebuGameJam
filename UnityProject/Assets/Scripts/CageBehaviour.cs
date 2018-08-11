@@ -7,6 +7,7 @@ public class CageBehaviour : SwitchTriggerBase
     public Transform PlayerPosition;
     public GameObject PlayerClonePrefab;
     public GameObject Bars;
+    public bool IsReverse;
 
     PlayerPlatformerController _player;
     bool _hasOpened;
@@ -33,6 +34,7 @@ public class CageBehaviour : SwitchTriggerBase
         Bars.SetActive(false);
 
         _player.SetIsFrozen(false);
+        _player.SetIsReverse(IsReverse);
         _player.GetComponent<SpriteRenderer>().sortingOrder = 5;
         _hasOpened = true;
         GameRegistry.Instance.RemoveCage(this);

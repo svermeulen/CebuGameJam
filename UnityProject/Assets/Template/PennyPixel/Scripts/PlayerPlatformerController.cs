@@ -12,6 +12,7 @@ public class PlayerPlatformerController : MonoBehaviour
     Animator animator;
     bool _isFrozen;
     bool _isDead;
+    bool _isReverse;
     Vector2 _lastMove;
 
     public static PlayerPlatformerController MainPlayer
@@ -32,6 +33,11 @@ public class PlayerPlatformerController : MonoBehaviour
     public Vector2 LastMove
     {
         get { return _lastMove; }
+    }
+
+    public void SetIsReverse(bool isReverse)
+    {
+        _isReverse = isReverse;
     }
 
     public void SetIsFrozen(bool isFrozen)
@@ -114,7 +120,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
         if (!_isFrozen)
         {
-            move.x = Input.GetAxis("Horizontal");
+            move.x = Input.GetAxis("Horizontal") * (_isReverse ? -1 : 1);
 
             if (Input.GetButtonDown("Jump") && grounded)
             {

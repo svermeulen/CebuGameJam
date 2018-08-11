@@ -20,7 +20,7 @@ public class ElevatorBehaviour : SwitchTriggerBase
         _goalPosition = DestinationPoint.transform.position;
 
         _rigidBody = this.GetComponent<Rigidbody2D>();
-        _state = IsOn ? State.Idle : State.MovingToGoal;
+        _state = IsOn ? State.MovingToGoal : State.Idle;
     }
 
     public void FixedUpdate()

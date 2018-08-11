@@ -94,14 +94,6 @@ public class GameController : MonoBehaviour
     {
         SoundManager.Instance.PlayDied();
 
-        foreach (var player in GameRegistry.Instance.AllPlayers)
-        {
-            if (deadPlayer != player)
-            {
-                player.SetIsFrozen(true);
-            }
-        }
-
         _waitingToRestart = true;
 
         Invoke("ShowEndScreen", 0.25f);

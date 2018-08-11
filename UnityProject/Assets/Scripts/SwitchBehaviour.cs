@@ -7,14 +7,17 @@ public class SwitchBehaviour : MonoBehaviour
     public SwitchTriggerBase[] Triggers;
     public Animator Animator;
 
-    bool _isOverSwitch;
     bool _isOn;
+
+    List<PlayerPlatformerController> _players = new List<PlayerPlatformerController>();
 
     void OnTriggerEnter2D(Collider2D theCollider)
     {
         if (theCollider.CompareTag("Player"))
         {
-            _isOverSwitch = true;
+            var player = theCollider.gameObject.GetComponent<PlayerPlatformerController>();
+            Assert.IsNotNull(player);
+            _players.Add(player);
         }
     }
 
@@ -22,26 +25,23 @@ public class SwitchBehaviour : MonoBehaviour
     {
         if (theCollider.CompareTag("Player"))
         {
-            _isOverSwitch = false;
+            var player = theCollider.gameObject.GetComponent<PlayerPlatformerController>();
+            Assert.IsNotNull(player);
+            _players.RemoveWithConfirm(player);
         }
     }
 
     public void Update()
     {
-        if (_isOverSwitch && Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !_players.IsEmpty())
         {
             _isOn = !_isOn;
             Animator.SetBool("IsOn", _isOn);
 
-            this.Invoke("TriggerTriggers", 0.5f);
-        }
-    }
-
-    void TriggerTriggers()
-    {
-        foreach (var trigger in Triggers)
-        {
-            trigger.Trigger(_isOn);
+            foreach (var trigger in Triggers)
+            {
+                trigger.Trigger(_isOn);
+            }
         }
     }
 }

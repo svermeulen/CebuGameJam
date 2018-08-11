@@ -8,6 +8,11 @@ public class CageBehaviour : SwitchTriggerBase
 
     bool _hasOpened;
 
+    public void Awake()
+    {
+        GameRegistry.Instance.AddCage(this);
+    }
+
     public override void Trigger()
     {
         if (_hasOpened)
@@ -17,5 +22,6 @@ public class CageBehaviour : SwitchTriggerBase
 
         _hasOpened = true;
         GameObject.Instantiate(PlayerClonePrefab, transform.position, Quaternion.identity);
+        GameRegistry.Instance.RemoveCage(this);
     }
 }

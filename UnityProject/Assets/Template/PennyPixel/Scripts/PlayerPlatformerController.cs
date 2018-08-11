@@ -15,6 +15,14 @@ public class PlayerPlatformerController : PhysicsObject
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        GameRegistry.Instance.AddPlayer(this);
+    }
+
+    public void Exit()
+    {
+        GameObject.Destroy(this.gameObject);
+        GameRegistry.Instance.RemovePlayer(this);
     }
 
     protected override void ComputeVelocity()

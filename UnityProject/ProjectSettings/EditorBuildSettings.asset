@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/kaye/lvl 1.unity
     guid: d796cc501a81df04e88f84c82a191e37
   - enabled: 1
+    path: Assets/Scenes/Steve/Steve1 lvl 2.unity
+    guid: f8a0920d7f5a2c649b6475acf0b5db4e
+  - enabled: 1
     path: Assets/Scenes/kaye/lvl 3.unity
     guid: 42b48b32e328ae64db3b8ddc392f9e4b
-  - enabled: 1
-    path: Assets/Scenes/Steve/Steve2.unity
-    guid: e5aaaac46c723834b92b640f65da7bd4
   - enabled: 1
     path: Assets/Scenes/kaye/lvl 4.unity
     guid: 79d9bb9d5ad1ca94fb0273a598f0e297
@@ -26,6 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/kaye/lvl 6.unity
     guid: 9d2719720632a874b8e5d56892627231
+  - enabled: 1
+    path: Assets/Scenes/Steve/Steve2 lvl 7.unity
+    guid: e5aaaac46c723834b92b640f65da7bd4
+  - enabled: 1
+    path: Assets/Scenes/kaye/lvl 8.unity
+    guid: 0fbb392d23e34f34990d096323ce6ac3
+  - enabled: 1
+    path: Assets/Scenes/kaye/lvl 9.unity
+    guid: 216a9f633ffceb544bc28c1e6701f29a
+  - enabled: 1
+    path: Assets/Scenes/kaye/lvl 10.unity
+    guid: c24d68d93144bab4c863c2932f0d0777
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 22856e1073bf7d2459b8bfbf25246808

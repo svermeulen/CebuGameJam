@@ -10,10 +10,12 @@ public class PlayerPlatformerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     Animator animator;
+    bool _isFrozen;
+    Vector2 _lastMove;
 
-    public bool IsInCage
+    public static PlayerPlatformerController MainPlayer
     {
-        get; set;
+        get; private set;
     }
 
     public float PlatformMove
@@ -21,9 +23,28 @@ public class PlayerPlatformerController : MonoBehaviour
         get; set;
     }
 
-    // Use this for initialization
+    public bool IsGrounded
+    {
+        get { return grounded; }
+    }
+
+    public Vector2 LastMove
+    {
+        get { return _lastMove; }
+    }
+
+    public void SetIsFrozen(bool isFrozen)
+    {
+        _isFrozen = isFrozen;
+    }
+
     void Awake()
     {
+        if (MainPlayer == null)
+        {
+            MainPlayer = this;
+        }
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -61,21 +82,21 @@ public class PlayerPlatformerController : MonoBehaviour
 
     public void Die()
     {
-        Destroy();
-
         GameController.Instance.OnPlayerDied(this);
+        HideAndStop();
     }
 
-    void Destroy()
+    void HideAndStop()
     {
-        GameRegistry.Instance.RemovePlayer(this);
-        GameObject.Destroy(this.gameObject);
+        SetIsFrozen(true);
+        animator.enabled = false;
+        spriteRenderer.enabled = false;
     }
 
     public void Exit()
     {
-        Destroy();
-
+        HideAndStop();
+        GameRegistry.Instance.RemovePlayer(this);
         GameController.Instance.OnPlayerExited(this);
     }
 
@@ -83,13 +104,18 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         Vector2 move = Vector2.zero;
 
-        if (!IsInCage)
+        if (!_isFrozen)
         {
             move.x = Input.GetAxis("Horizontal");
 
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = jumpTakeOffSpeed;
+
+                if (MainPlayer == this)
+                {
+                    SoundManager.Instance.PlayJump();
+                }
             }
             else if (Input.GetButtonUp("Jump"))
             {
@@ -117,6 +143,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat("velocityX", Mathf.Abs(move.x) / maxSpeed);
+
+        _lastMove = move;
 
         move.x += PlatformMove;
 
@@ -162,6 +190,11 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
+
+        if (_isFrozen)
+        {
+            velocity = Vector2.zero;
+        }
 
         grounded = false;
 

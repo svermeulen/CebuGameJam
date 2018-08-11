@@ -33,10 +33,15 @@ public class SwitchBehaviour : MonoBehaviour
             _isOn = !_isOn;
             Animator.SetBool("IsOn", _isOn);
 
-            foreach (var trigger in Triggers)
-            {
-                trigger.Trigger(_isOn);
-            }
+            this.Invoke("TriggerTriggers", 0.5f);
+        }
+    }
+
+    void TriggerTriggers()
+    {
+        foreach (var trigger in Triggers)
+        {
+            trigger.Trigger(_isOn);
         }
     }
 }

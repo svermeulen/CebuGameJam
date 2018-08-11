@@ -887,7 +887,7 @@ TilemapCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4532368491988960, guid: 847acf47372b90b479681c59b8ed05e6,
     type: 2}
-  m_PrefabInternal: {fileID: 1168883928}
+  m_PrefabInternal: {fileID: 1103570805}
 --- !u!1 &808969865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1626,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
     type: 2}
   m_PrefabInternal: {fileID: 867152642}
---- !u!1001 &1168883928
+--- !u!1001 &1103570805
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1796,37 +1796,6 @@ Prefab:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 588711352}
-    - target: {fileID: 4101299403823572, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.00000020861626
-      objectReference: {fileID: 0}
-    - target: {fileID: 4634084432306830, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.00000020861626
-      objectReference: {fileID: 0}
-    - target: {fileID: 114851369089697882, guid: 27303a7ed511a5645a6e2f923ea66f54,
-        type: 2}
-      propertyPath: m_SoftZoneWidth
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114851369089697882, guid: 27303a7ed511a5645a6e2f923ea66f54,
-        type: 2}
-      propertyPath: m_SoftZoneHeight
-      value: 0.112
-      objectReference: {fileID: 0}
-    - target: {fileID: 114851369089697882, guid: 27303a7ed511a5645a6e2f923ea66f54,
-        type: 2}
-      propertyPath: m_DeadZoneHeight
-      value: 0.021
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101299403823572, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4634084432306830, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
   m_IsPrefabAsset: 0
@@ -4084,7 +4053,8 @@ MonoBehaviour:
   Belts:
   - {fileID: 1511455737}
   - {fileID: 680043245}
-  State: 1
+  OnState: 0
+  OffState: 2
 --- !u!4 &2102104954
 Transform:
   m_ObjectHideFlags: 0

@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
         {
             if (player.transform.position.y < _killLine)
             {
-                player.Die();
+                player.Die(false);
             }
         }
     }

@@ -35,6 +35,14 @@ public class PlayerPlatformerController : MonoBehaviour
         get { return _lastMove; }
     }
 
+    void OnTriggerEnter2D(Collider2D theCollider)
+    {
+        if (theCollider.CompareTag("Killzone"))
+        {
+            Die(true);
+        }
+    }
+
     public void SetIsReverse(bool isReverse)
     {
         _isReverse = isReverse;
@@ -90,13 +98,22 @@ public class PlayerPlatformerController : MonoBehaviour
             .Where(x => x.target != this.transform).ToArray();
     }
 
-    public void Die()
+    public void Die(bool hideImmediately)
     {
         if (!_isDead)
         {
             _isDead = true;
             GameController.Instance.OnPlayerDied(this);
-            Invoke("HideAndStop", 0.5f);
+
+            if (hideImmediately)
+            {
+                SetIsFrozen(true);
+                animator.enabled = false;
+            }
+            else
+            {
+                Invoke("HideAndStop", 0.5f);
+            }
         }
     }
 

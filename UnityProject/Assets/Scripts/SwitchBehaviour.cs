@@ -5,14 +5,16 @@ using UnityEngine;
 public class SwitchBehaviour : MonoBehaviour
 {
     public SwitchTriggerBase[] Triggers;
+    public Animator Animator;
 
-    bool _isOnSwitch;
+    bool _isOverSwitch;
+    bool _isOn;
 
     void OnTriggerEnter2D(Collider2D theCollider)
     {
         if (theCollider.CompareTag("Player"))
         {
-            _isOnSwitch = true;
+            _isOverSwitch = true;
         }
     }
 
@@ -20,23 +22,21 @@ public class SwitchBehaviour : MonoBehaviour
     {
         if (theCollider.CompareTag("Player"))
         {
-            _isOnSwitch = false;
+            _isOverSwitch = false;
         }
     }
 
     public void Update()
     {
-        if (_isOnSwitch && Input.GetKeyDown(KeyCode.F))
+        if (_isOverSwitch && Input.GetKeyDown(KeyCode.F))
         {
-            FlipSwitch();
-        }
-    }
+            _isOn = !_isOn;
+            Animator.SetBool("IsOn", _isOn);
 
-    void FlipSwitch()
-    {
-        foreach (var trigger in Triggers)
-        {
-            trigger.Trigger();
+            foreach (var trigger in Triggers)
+            {
+                trigger.Trigger();
+            }
         }
     }
 }

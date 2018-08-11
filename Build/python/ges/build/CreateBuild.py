@@ -34,6 +34,7 @@ class Runner:
     _log = Inject('Logger')
     _sys = Inject('SystemHelper')
     _varManager = Inject('VarManager')
+    _zipHelper = Inject('ZipHelper')
 
     def __init__(self):
         self._platform = Platforms.Windows
@@ -59,6 +60,7 @@ class Runner:
             self._platform = Platforms.WebGl
             self._createBuild()
             self._sys.copyFile('[WebGlTemplate]', '[OutputRootDir]/WebGl/Web.config')
+            self._zipHelper.createZipFile('[OutputRootDir]/WebGl', '[OutputRootDir]/WebGlZip/GreatEggscapeWebGl.zip')
 
         if self._args.buildType == 'all' or self._args.buildType == 'pc':
             self._log.heading("Building windows")

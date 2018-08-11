@@ -7,6 +7,7 @@ public class BeltGroup : SwitchTriggerBase
     public BeltBehaviour[] Belts;
     public BeltStates OnState;
     public BeltStates OffState;
+    public float Speed = 1.0f;
 
     public void Awake()
     {
@@ -23,6 +24,7 @@ public class BeltGroup : SwitchTriggerBase
         foreach (var belt in Belts)
         {
             belt.State = state;
+            belt.Speed = Speed;
         }
     }
 }

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ModestTree;
 using UnityEditor;
 using UnityEngine;
+using UnityEditor.Build.Reporting;
 
 public class Builder
 {
@@ -31,7 +31,7 @@ public class Builder
             case BuildTarget.StandaloneWindows:
             {
                 BuildGeneric(
-                    "Windows/{0}/ZenjectSamples.exe".Fmt(GetScriptingRuntimeString()), scenePaths, isRelease);
+                    "Windows/TheGreatEggscape.exe", scenePaths, isRelease);
                 break;
             }
             case BuildTarget.WebGL:

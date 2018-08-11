@@ -116,9 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4769a9b29ce98d4593f7f52860b7861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Triggers:
-  - {fileID: 0}
-  - {fileID: 0}
+  Triggers: []
   Animator: {fileID: 95048450021831666}
 --- !u!212 &212605248099008198
 SpriteRenderer:

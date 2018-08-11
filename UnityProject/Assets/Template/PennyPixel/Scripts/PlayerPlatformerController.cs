@@ -11,10 +11,26 @@ public class PlayerPlatformerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
     bool _isFrozen;
+    Vector2 _lastMove;
+
+    public static PlayerPlatformerController MainPlayer
+    {
+        get; private set;
+    }
 
     public float PlatformMove
     {
         get; set;
+    }
+
+    public bool IsGrounded
+    {
+        get { return grounded; }
+    }
+
+    public Vector2 LastMove
+    {
+        get { return _lastMove; }
     }
 
     public void SetIsFrozen(bool isFrozen)
@@ -24,6 +40,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
     void Awake()
     {
+        if (MainPlayer == null)
+        {
+            MainPlayer = this;
+        }
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -84,6 +105,11 @@ public class PlayerPlatformerController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = jumpTakeOffSpeed;
+
+                if (MainPlayer == this)
+                {
+                    SoundManager.Instance.PlayJump();
+                }
             }
             else if (Input.GetButtonUp("Jump"))
             {
@@ -111,6 +137,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat("velocityX", Mathf.Abs(move.x) / maxSpeed);
+
+        _lastMove = move;
 
         move.x += PlatformMove;
 

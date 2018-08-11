@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip DieSound;
     public AudioClip ExitSound;
+    public AudioClip JumpSound;
     public AudioSource Source;
 
     public static SoundManager Instance
@@ -22,6 +23,11 @@ public class SoundManager : MonoBehaviour
     public void PlayDied()
     {
         Source.PlayOneShot(DieSound);
+    }
+
+    public void PlayJump()
+    {
+        Source.PlayOneShot(JumpSound);
     }
 
     public void PlayExitted()

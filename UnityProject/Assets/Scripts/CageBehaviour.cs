@@ -11,7 +11,7 @@ public class CageBehaviour : SwitchTriggerBase
     PlayerPlatformerController _player;
     bool _hasOpened;
 
-    public void Awake()
+    public void Start()
     {
         GameRegistry.Instance.AddCage(this);
 

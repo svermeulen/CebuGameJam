@@ -1,9 +1,12 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public AudioSource WalkNoise;
+
     public static GameController Instance
     {
         get; private set;
@@ -27,6 +30,21 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("Mainmenu");
         }
+
+        WalkNoise.volume = ShouldPlayFlutterNoise() ? 1 : 0;
+    }
+
+    bool ShouldPlayFlutterNoise()
+    {
+        foreach (var player in GameRegistry.Instance.AllPlayers)
+        {
+            if (Mathf.Abs(player.LastMove.x) > 0 && player.IsGrounded)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void OnPlayerDied(

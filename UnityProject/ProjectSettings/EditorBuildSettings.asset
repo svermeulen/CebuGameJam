@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Steve/Steve4.unity
     guid: 856b698a27c3a5b4996bbf7cd71531e0
   - enabled: 1
-    path: Assets/Scenes/Steve/Steve2 lvl 7.unity
+    path: Assets/Scenes/Steve/lvl 7.unity
     guid: e5aaaac46c723834b92b640f65da7bd4
   - enabled: 1
     path: Assets/Scenes/Steve/Steve3.unity
@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/kaye/lvl 11.unity
     guid: a69cbe8f8fef7ee41a43dc1471c7a70e
+  - enabled: 1
+    path: Assets/Scenes/kaye/lvl 12.unity
+    guid: f18dd40b406b763418e38f2cfe7f7155
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 22856e1073bf7d2459b8bfbf25246808

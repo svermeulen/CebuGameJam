@@ -61,23 +61,16 @@ public class PlayerPlatformerController : MonoBehaviour
 
     public void Die()
     {
-        Destroy();
         GameController.Instance.OnPlayerDied(this);
-    }
-
-    void Destroy()
-    {
-        SetIsFrozen(true);
-        GameRegistry.Instance.RemovePlayer(this);
-        //GameObject.Destroy(this);
-        animator.enabled = false;
-        spriteRenderer.enabled = false;
     }
 
     public void Exit()
     {
-        Destroy();
+        SetIsFrozen(true);
+        GameRegistry.Instance.RemovePlayer(this);
         GameController.Instance.OnPlayerExited(this);
+        animator.enabled = false;
+        spriteRenderer.enabled = false;
     }
 
     void ComputeVelocity()
@@ -163,6 +156,11 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
+
+        if (_isFrozen)
+        {
+            velocity = Vector2.zero;
+        }
 
         grounded = false;
 

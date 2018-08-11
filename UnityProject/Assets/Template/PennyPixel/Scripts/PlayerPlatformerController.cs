@@ -83,15 +83,21 @@ public class PlayerPlatformerController : MonoBehaviour
     public void Die()
     {
         GameController.Instance.OnPlayerDied(this);
+        HideAndStop();
+    }
+
+    void HideAndStop()
+    {
+        SetIsFrozen(true);
+        animator.enabled = false;
+        spriteRenderer.enabled = false;
     }
 
     public void Exit()
     {
-        SetIsFrozen(true);
+        HideAndStop();
         GameRegistry.Instance.RemovePlayer(this);
         GameController.Instance.OnPlayerExited(this);
-        animator.enabled = false;
-        spriteRenderer.enabled = false;
     }
 
     void ComputeVelocity()

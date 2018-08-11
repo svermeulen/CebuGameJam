@@ -10,18 +10,18 @@ public class PlayerPlatformerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     Animator animator;
-
-    public bool IsInCage
-    {
-        get; set;
-    }
+    bool _isFrozen;
 
     public float PlatformMove
     {
         get; set;
     }
 
-    // Use this for initialization
+    public void SetIsFrozen(bool isFrozen)
+    {
+        _isFrozen = isFrozen;
+    }
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -62,20 +62,21 @@ public class PlayerPlatformerController : MonoBehaviour
     public void Die()
     {
         Destroy();
-
         GameController.Instance.OnPlayerDied(this);
     }
 
     void Destroy()
     {
+        SetIsFrozen(true);
         GameRegistry.Instance.RemovePlayer(this);
-        GameObject.Destroy(this.gameObject);
+        //GameObject.Destroy(this);
+        animator.enabled = false;
+        spriteRenderer.enabled = false;
     }
 
     public void Exit()
     {
         Destroy();
-
         GameController.Instance.OnPlayerExited(this);
     }
 
@@ -83,7 +84,7 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         Vector2 move = Vector2.zero;
 
-        if (!IsInCage)
+        if (!_isFrozen)
         {
             move.x = Input.GetAxis("Horizontal");
 

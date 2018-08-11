@@ -20,6 +20,14 @@ public class GameController : MonoBehaviour
         CheckForLevelEnd();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Mainmenu");
+        }
+    }
+
     public void OnPlayerDied(
         PlayerPlatformerController player)
     {

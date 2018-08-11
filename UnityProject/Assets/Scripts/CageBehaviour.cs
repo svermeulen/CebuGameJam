@@ -19,7 +19,7 @@ public class CageBehaviour : SwitchTriggerBase
             PlayerClonePrefab, PlayerPosition.transform.position, Quaternion.identity)
             .GetComponent<PlayerPlatformerController>();
 
-        _player.IsInCage = true;
+        _player.SetIsFrozen(true);
         _player.GetComponent<SpriteRenderer>().sortingOrder = -7;
     }
 
@@ -31,7 +31,8 @@ public class CageBehaviour : SwitchTriggerBase
         }
 
         Bars.SetActive(false);
-        _player.IsInCage = false;
+
+        _player.SetIsFrozen(false);
         _player.GetComponent<SpriteRenderer>().sortingOrder = 5;
         _hasOpened = true;
         GameRegistry.Instance.RemoveCage(this);

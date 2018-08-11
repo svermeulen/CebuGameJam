@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Mainmanager : MonoBehaviour
 {
-    GameObject _;
+    public GameObject SelectLevelPrefab;
+    public Transform SelectLevelParent;
+    public Transform MainMenuPanel;
+
     bool _hasInitializedLevelSelect = false;
+    bool _isSelectingLevel = false;
 
     ///MAIN FUNCTION
     public void playbtn()
@@ -15,7 +19,7 @@ public class Mainmanager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void selectlevel()
+    void LazyInitLevelButtons()
     {
         if (_hasInitializedLevelSelect)
         {
@@ -32,11 +36,37 @@ public class Mainmanager : MonoBehaviour
         {
             var sceneName = System.IO.Path.GetFileNameWithoutExtension(
                 UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
+
+            var button = GameObject.Instantiate(SelectLevelPrefab, SelectLevelParent).GetComponent<Button>();
+
+            button.onClick.AddListener(() => SceneManager.LoadScene(sceneName));
+
+            button.gameObject.GetComponentInChildren<Text>().text = sceneName;
         }
     }
 
-    public void selectSpecificLevel(GameObject button)
+    public void selectlevel()
     {
+        LazyInitLevelButtons();
+        SelectLevel(true);
+    }
+
+    void SelectLevel(bool isSelectingLevel)
+    {
+        if (_isSelectingLevel != isSelectingLevel)
+        {
+            _isSelectingLevel = isSelectingLevel;
+            SelectLevelParent.gameObject.SetActive(isSelectingLevel);
+            MainMenuPanel.gameObject.SetActive(!isSelectingLevel);
+        }
+    }
+
+    public void Update()
+    {
+        if (_isSelectingLevel && Input.GetKeyDown(KeyCode.Escape))
+        {
+            SelectLevel(false);
+        }
     }
 
     public void exitbtn()

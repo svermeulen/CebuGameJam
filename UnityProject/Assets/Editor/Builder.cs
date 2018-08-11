@@ -52,7 +52,7 @@ public class Builder
     {
         var options = BuildOptions.None;
 
-        var path = Path.Combine(Path.Combine(Application.dataPath, "../../SampleBuilds"), relativePath);
+        var path = Path.Combine(Path.Combine(Application.dataPath, "../../../Builds"), relativePath);
 
         // Create the directory if it doesn't exist
         // Otherwise the build fails

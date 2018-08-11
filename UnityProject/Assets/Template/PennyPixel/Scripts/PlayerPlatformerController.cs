@@ -36,6 +36,17 @@ public class PlayerPlatformerController : MonoBehaviour
     public void SetIsFrozen(bool isFrozen)
     {
         _isFrozen = isFrozen;
+
+        if (isFrozen)
+        {
+            gameObject.layer = 9;
+        }
+        else
+        {
+            gameObject.layer = 8;
+        }
+
+        contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
     }
 
     void Awake()

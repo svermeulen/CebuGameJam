@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class CageBehaviour : SwitchTriggerBase
 {
+    public Transform PlayerPosition;
     public GameObject PlayerClonePrefab;
+    public GameObject Bars;
 
+    PlayerPlatformerController _player;
     bool _hasOpened;
 
     public void Awake()
     {
         GameRegistry.Instance.AddCage(this);
+
+        _player = GameObject.Instantiate(
+            PlayerClonePrefab, PlayerPosition.transform.position, Quaternion.identity)
+            .GetComponent<PlayerPlatformerController>();
+
+        _player.IsInCage = true;
+        _player.GetComponent<SpriteRenderer>().sortingOrder = -7;
     }
 
     public override void Trigger(bool isOn)
@@ -20,8 +30,10 @@ public class CageBehaviour : SwitchTriggerBase
             return;
         }
 
+        Bars.SetActive(false);
+        _player.IsInCage = false;
+        _player.GetComponent<SpriteRenderer>().sortingOrder = 5;
         _hasOpened = true;
-        GameObject.Instantiate(PlayerClonePrefab, transform.position, Quaternion.identity);
         GameRegistry.Instance.RemoveCage(this);
     }
 }

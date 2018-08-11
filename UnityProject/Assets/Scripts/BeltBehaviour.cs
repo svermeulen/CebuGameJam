@@ -15,6 +15,7 @@ public class BeltBehaviour : MonoBehaviour
     public float TileAnimateSpeed = 0.01f;
     public float ForceScale = 0.01f;
     public BeltStates State;
+    public float Speed = 1.0f;
 
     List<PlayerPlatformerController> _players = new List<PlayerPlatformerController>();
 
@@ -43,7 +44,7 @@ public class BeltBehaviour : MonoBehaviour
         if (State == BeltStates.Left || State == BeltStates.Right)
         {
             Renderer.material.mainTextureOffset = new Vector2(
-                Renderer.material.mainTextureOffset.x + TileAnimateSpeed * (State == BeltStates.Left ? 1 : -1), 0);
+                Renderer.material.mainTextureOffset.x + Speed * TileAnimateSpeed * (State == BeltStates.Left ? 1 : -1), 0);
         }
     }
 
@@ -55,12 +56,12 @@ public class BeltBehaviour : MonoBehaviour
             {
                 case BeltStates.Left:
                 {
-                    player.PlatformMove += -1.0f;
+                    player.PlatformMove += -1.0f * Speed;
                     break;
                 }
                 case BeltStates.Right:
                 {
-                    player.PlatformMove += 1.0f;
+                    player.PlatformMove += 1.0f * Speed;
                     break;
                 }
             }

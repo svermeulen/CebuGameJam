@@ -23,7 +23,11 @@ public class ElevatorBehaviour : SwitchTriggerBase
 
     public void FixedUpdate()
     {
-        if (_state != State.Idle)
+        if (_state == State.Idle)
+        {
+            _rigidBody.velocity = Vector2.zero;
+        }
+        else
         {
             var goalPos = _state == State.MovingToGoal ? _goalPosition : _startPosition;
 
@@ -41,6 +45,10 @@ public class ElevatorBehaviour : SwitchTriggerBase
         if (_state == State.Idle)
         {
             _state = State.MovingToGoal;
+        }
+        else
+        {
+            _state = State.Idle;
         }
     }
 

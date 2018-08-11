@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 7
-  jumpTakeOffSpeed: 8
+  jumpTakeOffSpeed: 10
   minGroundNormalY: 0.65
   gravityModifier: 1.5
 --- !u!212 &212064061491315838

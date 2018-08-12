@@ -218,6 +218,7 @@ RectTransform:
   - {fileID: 1982403257}
   - {fileID: 1900730079}
   - {fileID: 1840713414}
+  - {fileID: 1591689368}
   m_Father: {fileID: 507476760}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -369,15 +370,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 04978fdff41bbae4eb45071594fc417f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -585,6 +586,81 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563010287}
   m_CullTransparentMesh: 0
+--- !u!1 &1591689367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591689368}
+  - component: {fileID: 1591689370}
+  - component: {fileID: 1591689369}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1591689368
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591689367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 143545789}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 138.8, y: 103.7}
+  m_SizeDelta: {x: 540.34, y: 99.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1591689369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591689367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6132076, g: 0.16418317, b: 0.14173195, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 12dd9ef9e08bc064bb2431432158af92, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: THE GREAT EGGSCAPE
+--- !u!222 &1591689370
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591689367}
+  m_CullTransparentMesh: 0
 --- !u!1 &1654845649
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,8 +832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.001, z: -0.069000006}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.6, y: -88.6}
-  m_SizeDelta: {x: 175.32, y: 40.54}
+  m_AnchoredPosition: {x: 72.35, y: -77.13}
+  m_SizeDelta: {x: 187.42, y: 42.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840713415
 MonoBehaviour:
@@ -877,7 +953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.8099976, y: -1.9200134}
+  m_AnchoredPosition: {x: 3.8100586, y: -1.920044}
   m_SizeDelta: {x: -78.2, y: -49.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852638016
@@ -937,8 +1013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.006}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.600001, y: -36.6}
-  m_SizeDelta: {x: 175.32, y: 40.54}
+  m_AnchoredPosition: {x: 72.35, y: -22.9}
+  m_SizeDelta: {x: 187.42, y: 42.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900730080
 MonoBehaviour:
@@ -1061,8 +1137,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.006}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.6, y: 11.86}
-  m_SizeDelta: {x: 175.32, y: 40.54}
+  m_AnchoredPosition: {x: 72.35, y: 27.64}
+  m_SizeDelta: {x: 187.42, y: 42.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982403258
 MonoBehaviour:

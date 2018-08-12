@@ -46,7 +46,7 @@ public class Mainmanager : MonoBehaviour
 
             button.onClick.AddListener(() => SceneManager.LoadScene(sceneName));
 
-            button.gameObject.GetComponentInChildren<Text>().text = sceneName;
+            button.gameObject.GetComponentInChildren<Text>().text = "Level " + i.ToString();
         }
     }
 

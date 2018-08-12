@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
 
         _ground = GameObject.Find("Ground");
 
-        LevelText.text = string.Format("Level: {0}", Application.loadedLevelName);
+        LevelText.text = "Level " + Application.loadedLevel.ToString();
     }
 
     void Start()

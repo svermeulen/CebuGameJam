@@ -112,7 +112,7 @@ public class PlayerPlatformerController : MonoBehaviour
             }
             else
             {
-                Invoke("HideAndStop", 0.5f);
+                Invoke("HideAndStop", 0.3f);
             }
         }
     }

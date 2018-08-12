@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip DieSound;
     public AudioClip ExitSound;
     public AudioClip JumpSound;
+    public AudioClip SwitchSound;
     public AudioSource Source;
 
     public static SoundManager Instance
@@ -18,6 +19,11 @@ public class SoundManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+    }
+
+    public void PlaySwitch()
+    {
+        Source.PlayOneShot(SwitchSound);
     }
 
     public void PlayDied()

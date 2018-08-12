@@ -45,9 +45,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Steve/Steve8.unity
     guid: 63f3b0b262fe47644a0cb738f156be6a
   - enabled: 1
-    path: Assets/Scenes/Steve/Steve9.unity
-    guid: fd179ccc0d7cc58488713ba02775006b
-  - enabled: 1
     path: Assets/Scenes/kaye/lvl 8.unity
     guid: 0fbb392d23e34f34990d096323ce6ac3
   - enabled: 1
@@ -71,6 +68,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/kaye/lvl 12.unity
     guid: f18dd40b406b763418e38f2cfe7f7155
+  - enabled: 1
+    path: Assets/Scenes/Steve/Steve9.unity
+    guid: fd179ccc0d7cc58488713ba02775006b
   - enabled: 1
     path: Assets/Scenes/kaye/lvl 13.unity
     guid: b49ab7b8e7229364d9fcd4ffd9c71e00

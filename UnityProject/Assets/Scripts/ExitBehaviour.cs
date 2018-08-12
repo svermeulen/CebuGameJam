@@ -6,6 +6,8 @@ using System.Linq;
 
 public class ExitBehaviour : MonoBehaviour
 {
+
+
     List<PlayerPlatformerController> _players = new List<PlayerPlatformerController>();
 
     void OnTriggerEnter2D(Collider2D theCollider)
@@ -35,6 +37,7 @@ public class ExitBehaviour : MonoBehaviour
             foreach (var player in _players.ToList())
             {
                 player.Exit();
+
             }
         }
     }

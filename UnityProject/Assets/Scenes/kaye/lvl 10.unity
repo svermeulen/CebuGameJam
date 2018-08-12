@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114884801529243326, guid: 847acf47372b90b479681c59b8ed05e6,
+        type: 2}
+      propertyPath: finalemenuoflvl
+      value: 
+      objectReference: {fileID: 1499738082}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 847acf47372b90b479681c59b8ed05e6, type: 2}
   m_IsPrefabAsset: 0
@@ -2933,6 +2938,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27303a7ed511a5645a6e2f923ea66f54, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1499738082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1517797131204818, guid: 27303a7ed511a5645a6e2f923ea66f54,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499738081}
 --- !u!1001 &1505687586
 Prefab:
   m_ObjectHideFlags: 0

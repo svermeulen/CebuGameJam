@@ -59,13 +59,14 @@ class Runner:
             self._log.heading("Building windows")
             self._platform = Platforms.Windows
             self._createBuild()
+            self._zipHelper.createZipFile('[OutputRootDir]/Windows', '[OutputRootDir]/Windows.zip')
 
         if self._args.buildType == 'all' or self._args.buildType == 'webgl':
             self._log.heading("Building WebGl")
             self._platform = Platforms.WebGl
             self._createBuild()
             self._sys.copyFile('[WebGlTemplate]', '[OutputRootDir]/WebGl/Web.config')
-            self._zipHelper.createZipFile('[OutputRootDir]/WebGl', '[OutputRootDir]/WebGlZip/GreatEggscapeWebGl.zip')
+            self._zipHelper.createZipFile('[OutputRootDir]/WebGl', '[OutputRootDir]/GreatEggscapeWebGl.zip')
 
     def _clearTempDirectory(self):
         self._sys.deleteDirectoryIfExists('[TempDir]')

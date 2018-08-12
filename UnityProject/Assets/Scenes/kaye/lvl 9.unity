@@ -3174,17 +3174,17 @@ Prefab:
     - target: {fileID: 8195094282145968358, guid: 27303a7ed511a5645a6e2f923ea66f54,
         type: 2}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.r
-      value: 1
+      value: 0.33962262
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282145968358, guid: 27303a7ed511a5645a6e2f923ea66f54,
         type: 2}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.g
-      value: 1
+      value: 0.33802062
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282145968358, guid: 27303a7ed511a5645a6e2f923ea66f54,
         type: 2}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.b
-      value: 1
+      value: 0.33802062
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282145968358, guid: 27303a7ed511a5645a6e2f923ea66f54,
         type: 2}

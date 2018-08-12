@@ -1654,6 +1654,7 @@ MonoBehaviour:
   DieSound: {fileID: 8300000, guid: dc13fb9bf9ca1a24fbe737258e11169b, type: 3}
   ExitSound: {fileID: 8300000, guid: a4684500016f19a4d864628e29b443dc, type: 3}
   JumpSound: {fileID: 8300000, guid: 03127de7352ba5644a7d240e49a59c90, type: 3}
+  SwitchSound: {fileID: 8300000, guid: 1b1ddd2c703b32e409aa2de56fefaf1a, type: 3}
   Source: {fileID: 82320155408415966}
 --- !u!114 &114851369089697882
 MonoBehaviour:

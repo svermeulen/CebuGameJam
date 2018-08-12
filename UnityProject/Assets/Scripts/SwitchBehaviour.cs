@@ -37,6 +37,7 @@ public class SwitchBehaviour : MonoBehaviour
         {
             _isOn = !_isOn;
             Animator.SetBool("IsOn", _isOn);
+            SoundManager.Instance.PlaySwitch();
 
             foreach (var trigger in Triggers)
             {
